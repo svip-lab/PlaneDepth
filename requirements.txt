@@ -1,0 +1,11 @@
+ipython==8.11.0
+matplotlib==3.5.0
+numpy==1.21.2
+opencv_python==4.5.5.62
+Pillow==9.4.0
+scikit_image==0.18.3
+six==1.16.0
+skimage==0.0
+tensorboardX==2.6
+torch==1.10.0
+torchvision==0.11.1
