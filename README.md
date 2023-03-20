@@ -5,7 +5,7 @@ This is the official PyTorch implementation for
 > **PlaneDepth: Self-supervised Depth Estimation via Orthogonal Planes**
 
 <p align="center">
-  <img src="figures/pipeline.png" alt="pipeline of our method" width="800" />
+  <img src="figures/pipeline.png" alt="pipeline of our method" width="1000" />
 </p>
 
 ## 🐁 Setup
@@ -17,7 +17,6 @@ conda activate planedepth
 and then install the dependencies listed in requirements.txt.
 
 ## 🐂 KITTI training data
-
 You can download the entire [raw KITTI dataset](http://www.cvlibs.net/datasets/kitti/raw_data.php) by running:
 ```shell
 wget -i splits/kitti_archives_to_download.txt -P kitti/
@@ -34,7 +33,6 @@ You can also place the KITTI dataset wherever you like and point towards it with
 We provide the defult stereo training command of stage1 in `train_ResNet.sh`.
 
 To perform HRfinetune after stage1, update `train_ResNet.sh` as:
-
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 OMP_NUM_THREADS=1 torchrun --nproc_per_node=4 train.py \
 --png \
@@ -53,7 +51,6 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 OMP_NUM_THREADS=1 torchrun --nproc_per_node=4 train
 ```
 
 To perform self-distillation after HRfinetune, update `train_ResNet.sh` as:
-
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 OMP_NUM_THREADS=1 torchrun --nproc_per_node=4 train.py \
 --png \
