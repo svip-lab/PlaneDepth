@@ -101,7 +101,7 @@ We provide the defult evaluation command of in `eval.sh`. Please refer to your t
 
 ## 🐍 TODO list
 
-- [x] The ground truth depth during training is wrong because of cropping.
+- [x] The ground truth depth during training is wrong because of cropping, which will influence the training log in tensorboard.
 
 ## 🐎 Acknowledgements
 We thank [Monodepth2](https://github.com/nianticlabs/monodepth2) and [FalNet](https://github.com/JuanLuisGonzalez/FAL_net) for their outstanding methods and codes.
