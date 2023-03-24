@@ -105,3 +105,14 @@ We provide the defult evaluation command of in `eval.sh`. Please refer to your t
 
 ## 🐎 Acknowledgements
 We thank [Monodepth2](https://github.com/nianticlabs/monodepth2) and [FalNet](https://github.com/JuanLuisGonzalez/FAL_net) for their outstanding methods and codes.
+
+## 🐐 Citation
+If you find our paper or code useful, please cite
+```bibtex
+@inproceedings{wang2023planedepth,
+  title={PlaneDepth: Self-supervised Depth Estimation via Orthogonal Planes},
+  author={Wang, Ruoyu and Yu, Zehao and Gao, Shenghua},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2023}
+}
+```
