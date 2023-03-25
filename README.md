@@ -1,8 +1,10 @@
 # PlaneDepth
 
-This is the official PyTorch implementation for
+This is the official PyTorch implementation for the CVPR 2023 paper
 
 > **PlaneDepth: Self-supervised Depth Estimation via Orthogonal Planes**
+> 
+> [Paper](https://arxiv.org/abs/2210.01612)
 
 <p align="center">
   <img src="figures/pipeline.png" alt="pipeline of our method" width="1000" />
