@@ -84,7 +84,7 @@ Please adjust the following flags:
 (optional) --use_colmap
 ```
 
-### Other training options
+**Other training options**
 
 Look at `options.py` to see other options.
 
@@ -118,3 +118,6 @@ If you find our paper or code useful, please cite
   year={2023}
 }
 ```
+
+## 🐒 Contact us
+If you have any questions, don't hesitate to contact us at wangry3@shanghaitech.edu.cn or open an issue. Let's discuss and create more sparkling✨ works!
