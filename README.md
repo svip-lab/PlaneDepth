@@ -91,7 +91,7 @@ Look at `options.py` to see other options.
 
 ## 🐇 Evaluation
 
-We provide the defult evaluation command of in `eval.sh`. Please refer to your training settings to modify it.
+We provide the defult evaluation command in `eval.sh`. Please refer to your training settings to modify it.
 
 ## 🐉 Pretrained model
 
