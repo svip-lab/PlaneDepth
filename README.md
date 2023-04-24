@@ -11,12 +11,13 @@ This is the official PyTorch implementation for the CVPR 2023 paper
 </p>
 
 ## 🐁 Setup
-We recommend using the conda environment with python 3.9.7 by running:
+We recommend using anaconda to create the env and install the requirements by running:
 ```shell
 conda create -n planedepth python=3.9.7
 conda activate planedepth
+conda install pytorch==1.10.0 torchvision==0.11.1 torchaudio==0.10.0 cudatoolkit=11.3.1 -c pytorch -c conda-forge
+pip install -r requirements.txt
 ```
-and then install the dependencies listed in requirements.txt.
 
 ## 🐂 KITTI training data
 You can download the entire [raw KITTI dataset](http://www.cvlibs.net/datasets/kitti/raw_data.php) by running:
