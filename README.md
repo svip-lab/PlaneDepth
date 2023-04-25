@@ -98,7 +98,7 @@ We provide the defult evaluation command in `eval.sh`. Please refer to your trai
 
 You may need to export the ground truth depth before evaluation on Eigen raw split. Please run:
 ```shell
-python splits/eigen_raw/export_gt_depth.py
+python splits/eigen_raw/export_gt_depth.py --data_path ./kitti
 ```
 
 **Prepare Eigen improved ground truth**
