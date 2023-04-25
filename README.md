@@ -94,6 +94,25 @@ Look at `options.py` to see other options.
 
 We provide the defult evaluation command in `eval.sh`. Please refer to your training settings to modify it.
 
+**Prepare Eigen raw ground truth**
+
+You may need to export the ground truth depth before evaluation on Eigen raw split. Please run:
+```shell
+python splits/eigen_raw/export_gt_depth.py
+```
+
+**Prepare Eigen improved ground truth**
+
+To perform Eigen improved evaluation, you need to download the [Eigen improved dataset (14GB)](https://www.cvlibs.net/datasets/kitti/eval_depth.php) and unzip it by running:
+```shell
+unzip data_depth_annotated.zip -d kitti_depth
+```
+
+You can also place it wherever you like and point towards it with the --improved_path flag during export:
+```shell
+python splits/eigen_improved/prepare_groundtruth.py --improved_path ./kitti_depth
+```
+
 ## 🐉 Pretrained model
 
 | Model      | Abs Rel |  A1  |
