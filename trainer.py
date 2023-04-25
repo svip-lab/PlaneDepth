@@ -55,7 +55,7 @@ class Trainer:
         init_seeds(1+self.local_rank)
 
         if dist.get_rank() == 0:
-            save_code("./trainer_1stage.py", self.log_path)
+            save_code("./trainer.py", self.log_path)
             if self.opt.net_type == "ResNet":
                 save_code("./networks/depth_decoder.py", self.log_path)
                 save_code("./train_ResNet.sh", self.log_path)
