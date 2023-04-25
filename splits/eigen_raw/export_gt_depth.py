@@ -14,6 +14,7 @@ import PIL.Image as pil
 
 import sys
 sys.path.append("../..")
+sys.path.append(".")
 from utils import readlines
 from kitti_utils import generate_depth_map
 
@@ -24,8 +25,8 @@ def export_gt_depths_kitti():
 
     parser.add_argument('--data_path',
                         type=str,
-                        help='path to the root of the KITTI data',
-                        required=True)
+                        default="./kitti",
+                        help='path to the root of the KITTI data')
     opt = parser.parse_args()
 
     split_folder = os.path.dirname(__file__)
