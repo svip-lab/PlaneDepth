@@ -778,20 +778,20 @@ class Trainer:
         This isn't particularly accurate as it averages over the entire batch,
         so is only used to give an indication of validation performance
         """
-        depth_pred = torch.clamp(outputs["depth"].detach(), 1e-3, 80)
+        depth_pred = outputs["depth"].detach()
         # depth_pred = torch.clamp(F.interpolate(
         #     depth_pred, [375, 1242], mode="bilinear", align_corners=False), 1e-3, 80).detach()
         depth_pred = depth_pred * 2. / (inputs["grid"][:, 0:1, :, -1:] - inputs["grid"][:, 0:1, :, 0:1])
+        depth_pred = torch.clamp(depth_pred, 1e-3, 80)
         
         depth_gt = inputs[("depth_gt", "l")]
-        # depth_gt = torch.clamp(F.interpolate(
-        #     depth_pred, [375, 1242], mode="nearest"), 1e-3, 80).detach()
+        B, _, H, W = depth_gt.shape
 
         mask = depth_gt > 0
 
         # garg/eigen crop
         crop_mask = torch.zeros_like(mask)
-        crop_mask[:, :, 153:371, 44:1197] = 1
+        crop_mask[:, :, int(0.40810811 * H):int(0.99189189 * H), int(0.03594771 * W):int(0.96405229 * W)] = 1
         mask = mask * crop_mask
 
         depth_gt = depth_gt[mask]
