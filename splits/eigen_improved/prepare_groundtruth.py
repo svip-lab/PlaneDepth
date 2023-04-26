@@ -44,6 +44,6 @@ for index in range(len(filenames)):
         GT_depths.append(GT_depth)
 # GT_depths = np.array(GT_depths)
 np.savez(os.path.join(os.path.dirname(__file__), 'gt_depths.npz'),data=GT_depths)
-with open("new_test_files.txt", 'w') as f:
-    lines = f.writelines(new_filenames)
+# with open("new_test_files.txt", 'w') as f:
+#     lines = f.writelines(new_filenames)
 print(count)

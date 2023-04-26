@@ -91,15 +91,14 @@ class DepthDecoder(nn.Module):
             print("use DenseAspp Block")
             self.convs["denseaspp"] = DenseAspp()
             
-        #debug +14
         if render_probability:
-            self.convs["dispconv"] = Conv3x3(self.num_ch_dec[0], self.all_levels - 1)#+14)
+            self.convs["dispconv"] = Conv3x3(self.num_ch_dec[0], self.all_levels - 1)
         else:
-            self.convs["dispconv"] = Conv3x3(self.num_ch_dec[0], self.all_levels)#+14)
+            self.convs["dispconv"] = Conv3x3(self.num_ch_dec[0], self.all_levels)
         
         if self.use_mixture_loss:
             print("use mixture Lap loss")
-            self.convs["sigmaconv"] = Conv3x3(self.num_ch_dec[0], self.all_levels)#+14)
+            self.convs["sigmaconv"] = Conv3x3(self.num_ch_dec[0], self.all_levels)
             
         
             
@@ -182,31 +181,6 @@ class DepthDecoder(nn.Module):
             ground_layered = 0.1 * 0.58 * W / ground_layered
             disp_layered = torch.cat([disp_layered, ground_layered], dim=1)
             padding_mask = torch.cat([padding_mask, xz_padding_mask], dim=1)
-            
-            ######debug#######
-            # yz_levels = torch.arange(7).cuda()[None, :, None, None]
-            # yz_levels = yz_levels.expand(B, -1, -1, -1)
-            # yz_disp_min = 0.1 * 0.58 * 1280 / 10
-            # yz_disp_max = 0.1 * 0.58 * 1280 / 0.05
-            # yz_disp_layered = yz_disp_max * (yz_disp_min / yz_disp_max)**(yz_levels / 6) # B, N, 1, 1
-            # yz_depth_layered = 0.1 * 0.58 * 1280 / yz_disp_layered
-            # yz_depth_layered = yz_depth_layered.expand(-1, -1, H, W)
-            # x_grids_0 = input_grids[:, :1, ...].clone()
-            # yz_padding_mask_0 = (x_grids_0>=1e-7).expand(-1, 7, -1, -1)
-            # x_grids_0[x_grids_0<1e-7] = 1e-7
-            # yz_depth_layered_0 = yz_depth_layered * 0.58 / (x_grids_0 / 2.)
-            # yz_depth_layered_0 = (input_grids[:, :1, :, -1:] - input_grids[:, :1, :, :1]) / 2. * yz_depth_layered_0
-            
-            # x_grids_1 = input_grids[:, :1, ...].clone()
-            # yz_padding_mask_1 = (x_grids_1<=-1e-7).expand(-1, 7, -1, -1)
-            # x_grids_1[x_grids_1>-1e-7] = -1e-7
-            # yz_depth_layered_1 = -yz_depth_layered * 0.58 / (x_grids_1 / 2.)
-            # yz_depth_layered_1 = (input_grids[:, :1, :, -1:] - input_grids[:, :1, :, :1]) / 2. * yz_depth_layered_1
-            # yz_layered = torch.cat([yz_depth_layered_0, yz_depth_layered_1], dim=1)
-            # yz_layered = 0.1 * 0.58 * W / yz_layered
-            # disp_layered = torch.cat([disp_layered, yz_layered], dim=1)
-            # padding_mask = torch.cat([padding_mask, yz_padding_mask_0, yz_padding_mask_1], dim=1)
-            ######debug#######
             
             # original:
             # dgx = input_grids[:, 0, 0, -1] - input_grids[:, 0, 0, 0]

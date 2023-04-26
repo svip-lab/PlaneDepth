@@ -778,12 +778,12 @@ class Trainer:
         This isn't particularly accurate as it averages over the entire batch,
         so is only used to give an indication of validation performance
         """
-        depth_pred = outputs["depth"]
-        depth_pred = torch.clamp(F.interpolate(
-            depth_pred, [375, 1242], mode="bilinear", align_corners=False), 1e-3, 80).detach()
-
+        depth_pred = torch.clamp(outputs["depth"].detach(), 1e-3, 80)
+        # depth_pred = torch.clamp(F.interpolate(
+        #     depth_pred, [375, 1242], mode="bilinear", align_corners=False), 1e-3, 80).detach()
+        depth_pred = depth_pred * 2. / (inputs["grid"][:, 0:1, :, -1:] - inputs["grid"][:, 0:1, :, 0:1])
+        
         depth_gt = inputs[("depth_gt", "l")]
-        #TODO test during training is wrong because of data_aug and batch_aug
         # depth_gt = torch.clamp(F.interpolate(
         #     depth_pred, [375, 1242], mode="nearest"), 1e-3, 80).detach()
 
@@ -796,9 +796,10 @@ class Trainer:
 
         depth_gt = depth_gt[mask]
         depth_pred = depth_pred[mask]
-        depth_pred *= 5.4
-
-        depth_pred = torch.clamp(depth_pred, min=1e-3, max=80)
+        if self.opt.no_stereo:
+            depth_pred *= torch.median(depth_gt) / torch.median(depth_pred)
+        else:
+            depth_pred *= 5.4
 
         depth_errors = compute_depth_errors(depth_gt, depth_pred)
 

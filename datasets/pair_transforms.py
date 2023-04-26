@@ -47,6 +47,12 @@ class RandomResizeCrop(nn.Module):
                 inputs[(n + "_aug", im)] = input.clone()
                 inputs[k] = F.interpolate(inputs[k][None, ...], size=self.target_size, mode="bicubic", align_corners=True)[0].clamp(min=0., max=1.)
                 
+            elif "depth_gt" in k:
+                input = inputs[k]
+                input = F.interpolate(input[None, ...], size=[int(H * factor), int(W * factor)], mode="nearest")[0]
+                input = input[:, h0: h0 + self.target_size[0], w0: w0 + self.target_size[1]]
+                inputs[k] = input
+                
         return inputs
     
 class Resize(nn.Module):
@@ -69,6 +75,11 @@ class Resize(nn.Module):
                 inputs[(n, im)] = input
                 inputs[(n + "_aug", im)] = input
                 inputs[k] = F.interpolate(inputs[k][None, ...], size=self.target_size, mode="bicubic", align_corners=True)[0].clamp(min=0., max=1.)
+                
+            elif "depth_gt" in k:
+                input = inputs[k]
+                input = F.interpolate(input[None, ...], size=self.target_size, mode="nearest")[0]
+                inputs[k] = input
                 
         return inputs
     
