@@ -794,7 +794,7 @@ class Trainer:
         crop_mask[:, :, int(0.40810811 * H):int(0.99189189 * H), int(0.03594771 * W):int(0.96405229 * W)] = 1
         mask = mask * crop_mask
 
-        depth_gt = depth_gt[mask]
+        depth_gt = torch.clamp(depth_gt[mask], 1e-3, 80)
         depth_pred = depth_pred[mask]
         if self.opt.no_stereo:
             depth_pred *= torch.median(depth_gt) / torch.median(depth_pred)
