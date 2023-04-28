@@ -4,7 +4,7 @@ This is the official PyTorch implementation for the CVPR 2023 paper
 
 > **PlaneDepth: Self-supervised Depth Estimation via Orthogonal Planes**
 > 
-> [Paper](https://arxiv.org/abs/2210.01612)
+> [Arxiv](https://arxiv.org/abs/2210.01612)
 
 <p align="center">
   <img src="figures/pipeline.png" alt="pipeline of our method" width="1000" />
@@ -121,14 +121,17 @@ python splits/eigen_improved/prepare_groundtruth.py --improved_path ./kitti_dept
 | [`HRfinetune`](https://shanghaitecheducn-my.sharepoint.com/:f:/g/personal/wangry3_shanghaitech_edu_cn/EqmusgpF_m5GmwpmsG7czO4ByfFIIJe450GsFvST9mUn_w?e=grQJFz) | 0.086                | 0.906      |
 | [`self-distillation`](https://shanghaitecheducn-my.sharepoint.com/:f:/g/personal/wangry3_shanghaitech_edu_cn/EmYCmInpVd5CjJwu8-DCyY4BnJTKQ7IKnRx5GJYqQEVeMg?e=OCRdEl) | 0.085             | 0.910       |
 
-## 🐍 TODO list
+## 🐍 Known issues
+- When using the flag --use_mixture_loss in the `train.py`, users may encounter the error message "CUDNN_STATUS_NOT_INITIALIZED". This issue may be resolved by reducing the batch_size. [Issue_4](https://github.com/svip-lab/PlaneDepth/issues/4)
+
+## 🐎 TODO list
 
 - [x] The ground truth depth during training is wrong because of cropping, which will influence the training log in tensorboard.
 
-## 🐎 Acknowledgements
+## 🐐 Acknowledgements
 We thank [Monodepth2](https://github.com/nianticlabs/monodepth2) and [FalNet](https://github.com/JuanLuisGonzalez/FAL_net) for their outstanding methods and codes.
 
-## 🐐 Citation
+## 🐒 Citation
 If you find our paper or code useful, please cite
 ```bibtex
 @inproceedings{wang2023planedepth,
@@ -139,5 +142,5 @@ If you find our paper or code useful, please cite
 }
 ```
 
-## 🐒 Contact us
+## 🐓 Contact us
 If you have any questions, don't hesitate to contact us at wangry3@shanghaitech.edu.cn or open an issue. Let's discuss and create more sparkling✨ works!
