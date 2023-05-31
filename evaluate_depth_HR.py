@@ -165,7 +165,7 @@ def evaluate(opt):
                     pred_disp = batch_post_process_disparity(pred_disp[:N], pred_disp[N:, :, ::-1])
 
                 pred_disps.append(pred_disp)
-                probabilities_max.append(np.max(output["probability"].cpu().numpy(), axis=1).mean(-1).mean(-1))
+                probabilities_max.append(output["probability"].amax(1).mean(-1).mean(-1).cpu().numpy())
 
         pred_disps = np.concatenate(pred_disps)
         probabilities_max = np.concatenate(probabilities_max)
