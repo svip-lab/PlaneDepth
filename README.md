@@ -135,10 +135,12 @@ We thank [Monodepth2](https://github.com/nianticlabs/monodepth2) and [FalNet](ht
 If you find our paper or code useful, please cite
 ```bibtex
 @inproceedings{wang2023planedepth,
-  title={PlaneDepth: Self-supervised Depth Estimation via Orthogonal Planes},
-  author={Wang, Ruoyu and Yu, Zehao and Gao, Shenghua},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  year={2023}
+    author    = {Wang, Ruoyu and Yu, Zehao and Gao, Shenghua},
+    title     = {PlaneDepth: Self-Supervised Depth Estimation via Orthogonal Planes},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2023},
+    pages     = {21425-21434}
 }
 ```
 
